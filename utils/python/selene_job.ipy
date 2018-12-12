@@ -1,0 +1,215 @@
+import pandas as pd
+from custom_tools import print_md
+from metrics import Metrics
+
+def exist_file(path_to_file):
+    """
+    Return True if the file at the given path exists
+    → Arguments:
+        - path_to_file
+    """
+    file_found = ![ -e {path_to_file} ] && echo "yes" || echo "no"
+    return file_found[0] == "yes"
+
+
+class Selene_Job:
+    """
+    This class is used as an abstraction to send job on the selene cluster form the jupyter notebook
+    Please see the notebook analysis/prediction/cluster_job_tutorial.ipynb for a detailed example
+    → Members:
+      - job_id                               : job name
+      - cluster_username                     : user selene username
+      - local_job_directory_path             : local path to the job directory
+      - script_path                          : local path to the job script
+      - selene_ssh_server_path               : server name like 'guilminp@selene.mskcc.org'
+      - selene_ssh_remote_jobs_directory_path: cluster path to the ssh_remote_jobs/ directory
+      - selene_job_directory_path            : cluster path to the job directory
+      - metrics                              : job Metrics object
+    """
+
+    def __init__(self, job_id, cluster_username, cluster_path_to_ssh_remote_jobs, local_path_to_ssh_remote_jobs, load_from_id=False):
+        """
+        Create a job or reload one from its job id
+        → Ex: job = Selene_Job('RandomForest', 'guilminp', '/home/guilminp/impact-annotator', '../ssh_remote_jobs')
+              this will creates a local directory holding everything related to the job at 'analysis/prediction/ssh_remote_jobs/'
+        → Arguments:
+            - job_id
+            - cluster_username
+            - cluster_path_to_ssh_remote_jobs : cluster path to the the ssh_remote_jobs/ directory in the cloned impact-annotator repository
+            - local_path_to_ssh_remote_jobs   : local path to the ssh_remote_jobs/ directory
+            - load_from_id                    : if True, does not create the job and find it
+        """
+        self.job_id = job_id
+        self.cluster_username = cluster_username
+        
+        # local path
+        self.local_job_directory_path = local_path_to_ssh_remote_jobs + '/job_' + str(job_id)
+        self.script_path = self.local_job_directory_path + '/script.ipy'
+
+        # cluster path
+        self.selene_ssh_server_path                = cluster_username + '@selene.mskcc.org'
+        self.selene_ssh_remote_jobs_directory_path = cluster_path_to_ssh_remote_jobs
+        self.selene_job_directory_path             = cluster_path_to_ssh_remote_jobs + '/job_' + str(job_id)
+
+        if load_from_id:
+            # check if the job exist
+            if exist_file(self.local_job_directory_path):
+                print_md(self.get_job_md_string_('green') + '✅ job found and reloaded')
+            else:
+                print_md(self.get_job_md_string_('red') + '⚠️ does not exist yet')
+        else:
+            # check if the job doesn't exist
+            if exist_file(self.local_job_directory_path):
+                print_md(self.get_job_md_string_('red') + '⚠️ job already exists, please remove it with `job.remove()` or use `load_from_id = True` to reload the existing job\n')
+            else:
+                # create the job directory
+                print('➞ mkdir on local computer ' + self.local_job_directory_path)
+                !mkdir {self.local_job_directory_path}
+                print_md(self.get_job_md_string_('green') + '✅ created')
+
+
+    def get_job_md_string_(self, color):
+        """
+        Return a string like 'Job < RandomForest >:' embraced by the appropriate markdown tag corresponding to the given color
+        → Arguments:
+            - color: string color
+        """
+        return '<span style="color:' + color + '">Job < ' + str(self.job_id) + ' >: </span>'
+
+
+    def load_data(self, X, y, groups=None, path_to_script=None):
+        """
+        Save the X and y dataset as .pkl in the local job directory
+        → Arguments:
+            - X
+            - y
+            - groups        : if specified, groups for GroupKFold cross-validation
+            - path_to_script: if specified also copy the script from the given path in the local job directory
+        """
+        # print an error if the job doesn't exist
+        if not exist_file(self.local_job_directory_path):
+            print_md(self.get_job_md_string_('red') + '⚠️ does not exist yet')
+        else:
+            # save X and y as .pkl
+            print('➞ save X.pkl & y.pkl in ' + self.local_job_directory_path)
+            X.to_pickle(self.local_job_directory_path + '/X.pkl')
+            y.to_pickle(self.local_job_directory_path + '/y.pkl')
+
+            # save groups as .pkl
+            if groups is not None:
+                print('➞ save groups.pkl in ' + self.local_job_directory_path)
+                groups.to_pickle(self.local_job_directory_path + '/groups.pkl')
+
+            print_md(self.get_job_md_string_('green') + '✅ data loaded')
+
+            # copy the script from path_to_script
+            if path_to_script:
+                print('➞ cp script.ipy from {} to {}'.format(path_to_script, self.local_job_directory_path))
+                !cp {path_to_script} {self.local_job_directory_path}
+
+                print_md(self.get_job_md_string_('green') + '✅ script loaded')
+
+
+    def run(self, n_jobs=1, short_job=True, memory=None):
+        """
+        Run the job on the cluster:
+            - scp the local job directory to the cluster analysis/prediction/ssh_remote_jobs directory
+            - setup a working environment to launch the job
+            - bsub the job
+        → Ex: job.run(n_jobs=5, short_job=False, memory=16)
+              runs the job on the cluster requesting 5 CPUs and 16GB/CPU
+        → Arguments:
+            - n_jobs   : number of CPUs to use
+            - short_job: if True will bsub with '-We 59'
+            - memory   : amount of memory in GB per CPU (useful for Random Forest training for example)
+        """
+        # print an error if the job doesn't exist
+        if not exist_file(self.local_job_directory_path):
+            print_md(self.get_job_md_string_('red') + '⚠️ does not exist yet')
+        else:
+            # scp the job directory to the cluster
+            print('➞ scp ' + self.local_job_directory_path + ' to ' + self.selene_ssh_server_path + ':' + self.selene_job_directory_path)
+            !scp -r {self.local_job_directory_path} {self.selene_ssh_server_path + ':' + self.selene_ssh_remote_jobs_directory_path}
+
+            # setup command to:
+            #  - log on the cluster
+            #  - load the appropriate environments variables
+            #  - set the python virtualenv
+            #  - cd in the job directory
+            #  - rm the existing metrics.pkl or job_output.txt
+            setup_command = 'echo "➞ logged in $PWD on $HOSTNAME"; \
+                            \
+                            echo "➞ load ~/.bash_profile"; \
+                            source ~/.bash_profile; \
+                            export LSF_ENVDIR=/common/lsf/conf; export LSF_SERVERDIR=/common/lsf/9.1/linux2.6-glibc2.3-x86_64/etc; \
+                            \
+                            echo "➞ work on imp-ann_env python virtualenv"; \
+                            workon imp-ann_env; \
+                            \
+                            cd ' + self.selene_job_directory_path + '; \
+                            echo "➞ rm metrics.pkl & job_output.txt in $PWD"; \
+                            rm -f metrics.pkl job_output.txt\
+                            echo "➞ launch job in $PWD";'
+
+            # bsub command to bsub the job with the requested n_jobs and memory
+            bsub_command = 'bsub -o job_output.txt -J ' + self.job_id
+            if short_job:
+                bsub_command += ' -We 59'
+            if n_jobs > 1:
+                if memory:
+                    bsub_command += ' -n ' + str(n_jobs) + ' -R "span[ptile=5,mem=' + str(memory) + ']"'
+                else:
+                    bsub_command += ' -n ' + str(n_jobs) + ' -R "span[ptile=5]"'
+
+            bsub_command +=' "ipython script.ipy"'
+
+            # ssh the whole command
+            !ssh {self.selene_ssh_server_path} '{setup_command + bsub_command}'
+
+            print('➞ bsub command used: $ ' + bsub_command)
+            print_md(self.get_job_md_string_('green') + '✅ submitted\n')
+
+
+    def get_results(self):
+        """
+        Get the job metrics from the cluster:
+            - print an error if the job is not done or the results were not found (ie metrics.pkl doesn't exist in the cluster job directory)
+            - scp the files metrics.pkl and job_output.txt from the cluster job directory to the local computer job directory
+            - load metrics.pkl in a pandas dataframe self.metrics
+        """
+        # print an error if the job doesn't exist
+        if not exist_file(self.local_job_directory_path):
+            print_md(self.get_job_md_string_('red') + '⚠️ does not exist yet')
+        else:
+            # check if metrics.pkl exists on the cluster job directory
+            command = '[ -e ' + self.selene_job_directory_path + '/metrics.pkl ] && echo "yes" || echo "no"'
+            file_found = !ssh {self.selene_ssh_server_path} '{command}'
+
+            if file_found[0] == "yes":
+                # scp metrics.pkl & job_output.txt
+                print_md(self.get_job_md_string_('green') + '✅ finished\n')
+                print('➞ scp metrics.pkl & job_output.txt from ' + self.selene_ssh_server_path + ':' + self.selene_job_directory_path + ' to ' + self.local_job_directory_path)
+                ! scp -r {self.selene_ssh_server_path + ':' + self.selene_job_directory_path}/metrics.pkl    {self.local_job_directory_path}
+                ! scp -r {self.selene_ssh_server_path + ':' + self.selene_job_directory_path}/job_output.txt {self.local_job_directory_path}
+
+                # load metrics.pkl in a Metrics object
+                print('➞ load metrics.pkl in object self.metrics')
+                self.metrics = Metrics(read_from_pkl=True, path=self.local_job_directory_path + '/metrics.pkl')
+            else:
+                print_md(self.get_job_md_string_('red') + '⚠️ does not exist on the cluster, is not done yet or an error occured before the creation of `metrics.pkl`\n')
+
+
+    def remove(self):
+        """
+        Remove the job directory on the local computer and in the cluster
+        """
+        # rm the local job directory
+        print('➞ rm on local computer ' + self.local_job_directory_path + '')
+        !rm -f -r {self.local_job_directory_path}
+
+        # rm the cluster job directory
+        print('➞ rm on cluster ' + self.selene_job_directory_path)
+        command = 'rm -f -r ' + self.selene_job_directory_path
+        !ssh {self.selene_ssh_server_path} '{command}'
+
+        print_md(self.get_job_md_string_('green') + '✅ removed from local computer and cluster\n')

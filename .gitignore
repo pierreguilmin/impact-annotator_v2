@@ -1,0 +1,23 @@
+# Pierre's specific
+**/.DS_Store
+**/.ipynb_checkpoints
+**/__pycache__
+
+# data/
+data/**/*.txt
+data/**/*.csv
+data/**/*.tsv
+data/**/*.vcf
+data/**/*.xlsx
+!data/other_databases/candl-results-20180809100701.csv
+!data/other_databases/CancerGenesList.txt
+
+# ssh_remote_jobs
+analysis/prediction/artefact_classification/ssh_remote_jobs/**
+!analysis/prediction/artefact_classification/ssh_remote_jobs/.gitkeep
+analysis/prediction/driver_classification/ssh_remote_jobs/**
+!analysis/prediction/driver_classification/ssh_remote_jobs/.gitkeep
+
+# temp/
+temp/**
+!temp/.gitkeep

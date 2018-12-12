@@ -1,0 +1,50 @@
+"""
+This file setup the Jupyter notebook by:
+    - loading all appropriate libraries and custom files
+    - setting some jupyter notebook display parameters (for plots, dataframe...)
+    - checking if the current conda environment is the good one
+"""
+
+
+print('Setup environment...', end='')
+
+# special notebook embedding for matplotlib figures
+%matplotlib inline
+
+# import base python libraries
+import numpy as np
+import pandas as pd
+import matplotlib
+import matplotlib.pyplot as plt
+import seaborn
+
+# load custom files
+from custom_tools import *
+from metrics import *
+from summary import *
+from impact_wrapper import *
+
+# set jupyter notebook pandas dataframe output parameters
+pd.set_option('display.max_rows'    , 200)
+pd.set_option('display.max_columns' , 200)
+pd.set_option('display.max_colwidth', 1000)
+
+# set jupyter notebook matplotlib figure output default parameters
+matplotlib.rcParams['figure.dpi'] = 100
+matplotlib.rcParams['figure.figsize'] = (6, 6)
+
+# set the matplotlib figures style
+seaborn.set()
+
+print(' done!')
+
+
+# check current conda-env, print a warning if the current conda-env is not the project conda-env (imp-ann_env)
+current_conda_env = !echo $CONDA_DEFAULT_ENV
+current_conda_env = current_conda_env[0]
+if current_conda_env == 'imp-ann_env':
+    print_md('✅ Working on **imp-ann_env** conda environment.', color='green')
+else:
+    print_md('⚠️ Please activate the **imp-ann_env** conda environment to work with this notebook:', color='red')
+    print_md('\t\t\t$ source activate imp-ann_env', color='blue')
+    print_md('\t\t\tcurrent environment: ' + current_conda_env)
