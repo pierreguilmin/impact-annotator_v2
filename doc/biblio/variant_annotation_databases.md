@@ -1,5 +1,7 @@
 # Variant annotation databases
 
+Also see https://github.com/seandavi/awesome-cancer-variant-databases/blob/master/README.md.
+
 **Summary and table of contents**
 
 | Database name                                                         | Variants | Genes | Date     | Public             | Results in the notebook | Publication date | Website                                      |
