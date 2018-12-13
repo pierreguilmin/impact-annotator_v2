@@ -10,10 +10,11 @@
 
 
 
+
 ## Final clean
-- [ ] re-run all notebooks
 - [ ] sort `temp/` folder
 - [ ] comment all `prediction/` notebooks
+
 
 
 
@@ -25,6 +26,11 @@
 
 ### Other
 - [ ] errors only appearing in detailed CV
+- [x] try 3-base change feature
+- [ ] try features like (BioC)
+    - genome mappability
+    - repeat level
+    - GC content
 
 ### Ideas
 - [ ] more artefacts
@@ -35,9 +41,24 @@
 
 
 
+## Python
+- [x] simplify cluster username, and ssh_remote_jobs path specification for `Selene_Job` class
+
+
+
 ## Roadmap
 
 1. 🔬Try deep learning methods.  
 2. 👀Compare both steps (artefact vs somatic and driver vs passenger) with existing methods.
 3. 🌍Create a two-steps web-based classifier.  
 4. 📃Write the paper!  
+
+
+
+
+
+## temp
+- Elsa's training
+- `driver_classification/`
+- previous and next base
+- plot features importance
