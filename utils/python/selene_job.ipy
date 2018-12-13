@@ -16,6 +16,10 @@ class Selene_Job:
     """
     This class is used as an abstraction to send job on the selene cluster form the jupyter notebook
     Please see the notebook analysis/prediction/cluster_job_tutorial.ipynb for a detailed example
+    → Static members:
+        - cluster_username               : user selene username
+        - ssh_remote_jobs_cluster_path: cluster path to the the ssh_remote_jobs/ directory in the cloned impact-annotator_v2 repository
+        - ssh_remote_jobs_local_path  : local path to the ssh_remote_jobs/ directory
     → Members:
       - job_id                               : job name
       - cluster_username                     : user selene username
@@ -27,7 +31,15 @@ class Selene_Job:
       - metrics                              : job Metrics object
     """
 
-    def __init__(self, job_id, cluster_username, cluster_path_to_ssh_remote_jobs, local_path_to_ssh_remote_jobs, load_from_id=False):
+    cluster_username = None
+    ssh_remote_jobs_cluster_path = None
+    ssh_remote_jobs_local_path   = None
+
+    def __init__(self, job_id,
+                 cluster_username=None,
+                 ssh_remote_jobs_cluster_path=None,
+                 ssh_remote_jobs_local_path=None,
+                 load_from_id=False):
         """
         Create a job or reload one from its job id
         → Ex: job = Selene_Job('RandomForest', 'guilminp', '/home/guilminp/impact-annotator', '../ssh_remote_jobs')
@@ -35,21 +47,43 @@ class Selene_Job:
         → Arguments:
             - job_id
             - cluster_username
-            - cluster_path_to_ssh_remote_jobs : cluster path to the the ssh_remote_jobs/ directory in the cloned impact-annotator repository
-            - local_path_to_ssh_remote_jobs   : local path to the ssh_remote_jobs/ directory
+            - ssh_remote_jobs_cluster_path : cluster path to the the ssh_remote_jobs/ directory in the cloned impact-annotator_v2 repository
+            - ssh_remote_jobs_local_path   : local path to the ssh_remote_jobs/ directory
             - load_from_id                    : if True, does not create the job and find it
         """
+
+        # Handle not defined class variable and missing parameters
+        if cluster_username is None:
+            if self.cluster_username is None:
+                print_md('<span style="color:red">⚠️ Please define "Selene_Job.cluster_username" before using the class.</span>')
+                return
+            else:
+                cluster_username = self.cluster_username # refers to class ("static") variable
+        if ssh_remote_jobs_cluster_path is None:
+            if self.ssh_remote_jobs_cluster_path is None:
+                print_md('<span style="color:red">⚠️ Please define "Selene_Job.ssh_remote_jobs_cluster_path" before using the class.</span>')
+                return
+            else:
+                ssh_remote_jobs_cluster_path = self.ssh_remote_jobs_cluster_path # refers to class ("static") variable
+        if ssh_remote_jobs_local_path is None:
+            if self.ssh_remote_jobs_local_path is None:
+                print_md('<span style="color:red">⚠️ Please define "Selene_Job.ssh_remote_jobs_local_path" before using the class.</span>')
+                return
+            else:
+                ssh_remote_jobs_local_path = self.ssh_remote_jobs_local_path # refers to class ("static") variable
+
+
         self.job_id = job_id
         self.cluster_username = cluster_username
         
         # local path
-        self.local_job_directory_path = local_path_to_ssh_remote_jobs + '/job_' + str(job_id)
+        self.local_job_directory_path = ssh_remote_jobs_local_path + '/job_' + str(job_id)
         self.script_path = self.local_job_directory_path + '/script.ipy'
 
         # cluster path
         self.selene_ssh_server_path                = cluster_username + '@selene.mskcc.org'
-        self.selene_ssh_remote_jobs_directory_path = cluster_path_to_ssh_remote_jobs
-        self.selene_job_directory_path             = cluster_path_to_ssh_remote_jobs + '/job_' + str(job_id)
+        self.selene_ssh_remote_jobs_directory_path = ssh_remote_jobs_cluster_path
+        self.selene_job_directory_path             = ssh_remote_jobs_cluster_path + '/job_' + str(job_id)
 
         if load_from_id:
             # check if the job exist
