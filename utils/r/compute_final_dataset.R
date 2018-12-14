@@ -3,8 +3,8 @@
 #     - analysis/compute_final_dataset/annotate_final_dataset.ipynb
 
 
-source("../utils/R/custom_tools.R")
-setup_environment("../utils/R/")
+source("../utils/r/custom_tools.R")
+setup_environment("../utils/r/")
 
 
 ##############################################
