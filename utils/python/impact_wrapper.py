@@ -24,7 +24,7 @@ class Impact_Wrapper():
                                      'VEP_Consequence', 'VEP_SYMBOL', 'VEP_HGVSc', 'VEP_HGVSp', 'VEP_Amino_acids', 'VEP_VARIANT_CLASS',
                                      'VEP_EXON', 'VEP_INTRON', 'VEP_IMPACT', 'VEP_CLIN_SIG',
                                      'sample_mut_key', 'patient_key', 'VEP_SIFT_class', 'VEP_PolyPhen_class', 'VEP_in_dbSNP',
-                                     'is_a_hotspot', 'is_a_3d_hotspot', 'oncogenic', 'gene_type']
+                                     'is_a_hotspot', 'is_a_3d_hotspot', 'oncogenic', 'gene_type', 'variant_caller_cv']
 
 
     def __init__(self, path, label, shuffle=True):

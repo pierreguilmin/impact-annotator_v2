@@ -157,8 +157,12 @@ All Python notebooks will begin with the following lines, which load a set of cu
 ```ipython
 %run ../../utils/Python/setup_environment.ipy
 
-# if you want to send jobs on the cluster from the notebook on your local computer, please also run:
+# if you want to send jobs on the cluster from the notebook on your local computer, please also run something like the following:
+# (see analysis/prediction/cluster_job_tutorial.ipynb for more informations)
 %run ../../utils/Python/selene_job.ipy
+Selene_Job.cluster_username             = 'guilminp'
+Selene_Job.ssh_remote_jobs_cluster_path = '/home/guilminp/impact-annotator_v2/analysis/prediction/artefact_classification/ssh_remote_jobs'
+Selene_Job.ssh_remote_jobs_local_path   = 'ssh_remote_jobs'
 ```
 
 
