@@ -1,0 +1,25 @@
+
+# load the ml_tools functions
+%run ../../../../../utils/python/metrics.py
+
+# load the features matrix and target array
+X = pd.read_pickle('X.pkl')
+y = pd.read_pickle('y.pkl')
+
+# set cross-validation
+from sklearn.model_selection import RepeatedStratifiedKFold
+cv_strategy = RepeatedStratifiedKFold(n_splits=5, n_repeats=10, random_state=42)
+
+# create model and get the metrics
+from imblearn.pipeline import make_pipeline
+from imblearn.under_sampling import RandomUnderSampler
+from sklearn.ensemble import RandomForestClassifier
+
+model = make_pipeline(RandomUnderSampler(ratio='majority', random_state=42),
+                      RandomForestClassifier(random_state=42, n_estimators=1000, max_depth=18, criterion='entropy'))
+metrics = Metrics(model, X, y, cv_strategy, n_jobs=25)
+
+# save the metrics
+print('Save metrics...', end='')
+metrics.save()
+print(' done!')

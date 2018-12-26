@@ -15,9 +15,11 @@ data/**/*.xlsx
 # ssh_remote_jobs
 analysis/prediction/artefact_classification/ssh_remote_jobs/**/X.pkl
 analysis/prediction/artefact_classification/ssh_remote_jobs/**/y.pkl
+analysis/prediction/artefact_classification/ssh_remote_jobs/**/groups.pkl
 
 analysis/prediction/driver_classification/ssh_remote_jobs/**/X.pkl
 analysis/prediction/driver_classification/ssh_remote_jobs/**/y.pkl
+analysis/prediction/driver_classification/ssh_remote_jobs/**/groups.pkl
 
 # temp/
 temp/**

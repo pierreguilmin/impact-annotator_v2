@@ -26,7 +26,7 @@ parameters_grid = [
 pipe = make_pipeline(RandomUnderSampler(ratio='majority', random_state=42),
                      RandomForestClassifier(random_state=42))
 model = GridSearchCV(pipe, parameters_grid, cv=nested_cv_strategy, scoring='roc_auc', refit=True, return_train_score=True)
-metrics = Metrics(model, X, y, cv_strategy, n_jobs=5)
+metrics = Metrics(model, X, y, cv_strategy, n_jobs=20)
 
 # save the metrics
 print('Save metrics...', end='')
