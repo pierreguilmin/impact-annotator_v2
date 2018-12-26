@@ -1,0 +1,46 @@
+Run model... done! (2968.60s)
+Save metrics... done!
+/ifs/work/leukgen/bin/python/.virtualenvs/users/guilminp/impact-annotator_env/lib/python3.6/site-packages/sklearn/linear_model/base.py:297: RuntimeWarning: overflow encountered in exp
+  np.exp(prob, prob)
+/ifs/work/leukgen/bin/python/.virtualenvs/users/guilminp/impact-annotator_env/lib/python3.6/site-packages/sklearn/linear_model/logistic.py:757: ConvergenceWarning: lbfgs failed to converge. Increase the number of iterations.
+  "of iterations.", ConvergenceWarning)
+/ifs/work/leukgen/bin/python/.virtualenvs/users/guilminp/impact-annotator_env/lib/python3.6/site-packages/sklearn/linear_model/logistic.py:757: ConvergenceWarning: lbfgs failed to converge. Increase the number of iterations.
+  "of iterations.", ConvergenceWarning)
+/ifs/work/leukgen/bin/python/.virtualenvs/users/guilminp/impact-annotator_env/lib/python3.6/site-packages/sklearn/linear_model/logistic.py:757: ConvergenceWarning: lbfgs failed to converge. Increase the number of iterations.
+  "of iterations.", ConvergenceWarning)
+/ifs/work/leukgen/bin/python/.virtualenvs/users/guilminp/impact-annotator_env/lib/python3.6/site-packages/sklearn/linear_model/logistic.py:757: ConvergenceWarning: lbfgs failed to converge. Increase the number of iterations.
+  "of iterations.", ConvergenceWarning)
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@u35>
+Subject: Job 30535323: <RidgeRegression> in cluster <solar> Done
+
+Job <RidgeRegression> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <5*u35>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator/analysis/prediction/driver_classification/ssh_remote_jobs/job_RidgeRegression> was used as the working directory.
+Started at Fri Dec  7 19:05:15 2018
+Results reported on Fri Dec  7 19:55:56 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   14732.96 sec.
+    Total Requested Memory :                     8.00 GB
+    Delta Memory :                               -
+    Max Swap :                                   20 GB
+    Max Processes :                              16
+    Max Threads :                                215
+    Run time :                                   3041 sec.
+    Turnaround time :                            3306 sec.
+
+The output (if any) is above this job summary.
+

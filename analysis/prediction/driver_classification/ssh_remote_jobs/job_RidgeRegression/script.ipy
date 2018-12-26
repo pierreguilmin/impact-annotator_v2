@@ -1,0 +1,27 @@
+
+# load the ml_tools functions
+%run ../../../../../utils/python/metrics.py
+
+# load the features matrix and target array
+X = pd.read_pickle('X.pkl')
+y = pd.read_pickle('y.pkl')
+
+# setup cross-validation and import modules
+from sklearn.model_selection import StratifiedKFold
+cv_strategy = StratifiedKFold(n_splits=5)
+nested_cv_strategy = StratifiedKFold(n_splits=3)
+
+# choose a model and run it
+from imblearn.pipeline import make_pipeline
+from imblearn.under_sampling import RandomUnderSampler
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegressionCV
+model = make_pipeline(RandomUnderSampler(ratio='majority', random_state=42),
+                      StandardScaler(),
+                      LogisticRegressionCV(cv=nested_cv_strategy, scoring='roc_auc', random_state=42, max_iter=1000))
+metrics = Metrics(model, X, y, cv_strategy, n_jobs=5)
+
+# save the metrics
+print('Save metrics...', end='')
+metrics.save()
+print(' done!')

@@ -77,7 +77,7 @@ class Summary():
         std_metrics.index = mean_metrics.index
 
         # get colors
-        colors = seaborn.color_palette("viridis", self.summary.shape[0])
+        colors = seaborn.color_palette('viridis', self.summary.shape[0])
 
         # if some color have been specified, replace the default colors by the specified ones
         for i, c in enumerate(self.summary['color']):

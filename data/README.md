@@ -44,6 +44,18 @@ The following explains how to download each dataset used in the study. More info
     ```
 
 ### Final dataset used in the rest of the study
+> :zap: You can skip all this part by using the `get_processed_data.sh` script:
+> - **Processed data stored in the cluster**  
+>     Input:   
+>     Outputs:
+>     * `processed/final_IMPACT_mutations_20181105.txt` (final dataset annotated with VEP)  
+>     * `processed/annotated_final_IMPACT_mutations_20181105.txt` (final dataset annotated with OncoKB and others → the one used for the analysis)
+> 
+>     Command:
+>     ```shell
+>     $ bash get_processed_data.sh your_cluster_username
+>     ```
+
 - **Raw dataset annotated with click_annotvcf ([`/annotate_with_click_annotvcf`](annotate_with_click_annotvcf/) folder)**  
     Input: `raw/all_IMPACT_mutations_20181105.txt`  
     Outputs:  

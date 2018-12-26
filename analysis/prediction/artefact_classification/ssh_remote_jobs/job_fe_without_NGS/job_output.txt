@@ -1,0 +1,38 @@
+Run model... done! (923.51s)
+Save metrics... done!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@s16>
+Subject: Job 30720561: <fe_without_NGS> in cluster <solar> Done
+
+Job <fe_without_NGS> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <20*s16>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator_v2/analysis/prediction/artefact_classification/ssh_remote_jobs/job_fe_without_NGS> was used as the working directory.
+Started at Thu Dec 13 11:58:43 2018
+Results reported on Thu Dec 13 12:14:20 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   15359.89 sec.
+    Max Memory :                                 1 GB
+    Average Memory :                             0.17 GB
+    Total Requested Memory :                     8.00 GB
+    Delta Memory :                               7.00 GB
+    Max Swap :                                   80 GB
+    Max Processes :                              56
+    Max Threads :                                866
+    Run time :                                   937 sec.
+    Turnaround time :                            937 sec.
+
+The output (if any) is above this job summary.
+

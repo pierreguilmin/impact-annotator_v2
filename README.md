@@ -88,13 +88,15 @@ $ deactivate
 $ rmvirtualenv imp-ann_env
 ```
 
-Please add the following line in your `~/.bashrc` or `~/.bash_profile` to use virtualenv functions directly from the notebook later:
+On the cluster, please add the following line in your `~/.bash_profile` to use virtualenv functions directly from the notebook later:
 ```bash
-# add in your ~/.bashrc or ~/.bash_profile
+# add in your cluster ~/.bash_profile
 source `which virtualenvwrapper.sh`
 ```
 
 #### Step 2.2 - Setup a python conda-environment on your local computer
+
+We assume you have conda installed on your computer, otherwise please see https://conda.io/docs/index.html (conda documentation) and https://conda.io/docs/_downloads/conda-cheatsheet.pdf (conda cheat sheet). You need to install `jupyter lab` and `nb_conda_kernels` in your base conda environment if not done yet.
 
 To create the conda-env, please run the following command:
 ```bash
@@ -112,7 +114,6 @@ $ source deactivate
 
 # remove the conda-env
 $ conda env remove --name imp-ann_env
-
 ```
 
 > :warning: Please always activate the `imp-ann_env` conda-env before running any Python notebook, to make sure you have all the necessary dependencies and the good libraries version:
@@ -139,7 +140,7 @@ Go to the [`data/`](data/) folder and follow the `README.md` to download all the
 ### Step 3: Checklist
 - [ ] Download R packages `tidyverse`, `gridExtra`, `utf8`, `readxl`, `hexbin`
 - [ ] Create cluster virtualenv `imp-ann_env`
-- [ ] Add <code>source \`which virtualenvwrapper.sh\`</code> in `~/.bashrc` or `~/.bash_profile`
+- [ ] Add <code>source \`which virtualenvwrapper.sh\`</code> in cluster `~/.bash_profile`
 - [ ] Create local conda-env `imp-ann_env`
 - [ ] Remember to always activate the conda-env `imp-ann_env` before running a Jupyter Notebook/JupyterLab instance locally (`$ source activate imp-ann_env`)
 
@@ -169,7 +170,7 @@ Selene_Job.ssh_remote_jobs_local_path   = 'ssh_remote_jobs'
 
 
 ## Supplementary
-The conda-env and the `.yml` requirement file were created with the following command:
+The conda-env and the `.yml` requirement file were created with the following commands:
 ```bash
 # create conda-env
 conda create -c conda-forge --name imp-ann_env python=3.6 ipython nb_conda_kernels numpy matplotlib seaborn pandas scikit-learn imbalanced-learn

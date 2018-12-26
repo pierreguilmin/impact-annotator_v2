@@ -215,7 +215,7 @@ class Selene_Job:
         if not exist_file(self.local_job_directory_path):
             print_md(self.get_job_md_string_('red') + '⚠️ does not exist yet')
         else:
-            # check if metrics.pkl exists on the cluster job directory
+            # check if metrics.pkl exists in the cluster job directory
             command = '[ -e ' + self.selene_job_directory_path + '/metrics.pkl ] && echo "yes" || echo "no"'
             file_found = !ssh {self.selene_ssh_server_path} '{command}'
 
@@ -231,6 +231,27 @@ class Selene_Job:
                 self.metrics = Metrics(read_from_pkl=True, path=self.local_job_directory_path + '/metrics.pkl')
             else:
                 print_md(self.get_job_md_string_('red') + '⚠️ does not exist on the cluster, is not done yet or an error occured before the creation of `metrics.pkl`\n')
+
+
+    def get_local_results(self):
+        """
+        Get the job metrics from the local ssh_remote_jobs directory:
+            - print an error if the results were not found (ie metrics.pkl doesn't exist in the local job directory)
+            - load metrics.pkl in a pandas dataframe self.metrics
+        """
+        # print an error if the job doesn't exist
+        if not exist_file(self.local_job_directory_path):
+            print_md(self.get_job_md_string_('red') + '⚠️ does not exist yet')
+        else:
+            # check if metrics.pkl exists in the local job directory
+            if exist_file(self.local_job_directory_path + '/metrics.pkl'):
+                print_md(self.get_job_md_string_('green') + '✅ local results found\n')
+
+                # load metrics.pkl in a Metrics object
+                print('➞ load metrics.pkl in object self.metrics')
+                self.metrics = Metrics(read_from_pkl=True, path=self.local_job_directory_path + '/metrics.pkl')
+            else:
+                print_md(self.get_job_md_string_('red') + '⚠️ no `metrics.pkl` found in the local job directory\n')
 
 
     def remove(self):

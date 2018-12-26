@@ -13,10 +13,11 @@ data/**/*.xlsx
 !data/other_databases/CancerGenesList.txt
 
 # ssh_remote_jobs
-analysis/prediction/artefact_classification/ssh_remote_jobs/**
-!analysis/prediction/artefact_classification/ssh_remote_jobs/.gitkeep
-analysis/prediction/driver_classification/ssh_remote_jobs/**
-!analysis/prediction/driver_classification/ssh_remote_jobs/.gitkeep
+analysis/prediction/artefact_classification/ssh_remote_jobs/**/X.pkl
+analysis/prediction/artefact_classification/ssh_remote_jobs/**/y.pkl
+
+analysis/prediction/driver_classification/ssh_remote_jobs/**/X.pkl
+analysis/prediction/driver_classification/ssh_remote_jobs/**/y.pkl
 
 # temp/
 temp/**

@@ -1,0 +1,34 @@
+
+# load the ml_tools functions
+%run ../../../../../utils/python/metrics.py
+
+# load the features matrix and target array
+X = pd.read_pickle('X.pkl')
+y = pd.read_pickle('y.pkl')
+
+# setup cross-validation and import modules
+from sklearn.model_selection import StratifiedKFold
+cv_strategy = StratifiedKFold(n_splits=5)
+nested_cv_strategy = StratifiedKFold(n_splits=3)
+
+# choose a model and run it
+from imblearn.pipeline import make_pipeline
+from imblearn.under_sampling import RandomUnderSampler
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import GradientBoostingClassifier
+parameters_grid = [
+                    {'gradientboostingclassifier__loss': ['deviance', 'exponential'],
+                     'gradientboostingclassifier__learning_rate': [0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1, 0.11, 0.12, 0.15, 0.2],
+                     'gradientboostingclassifier__n_estimators': [20, 50, 100, 500, 800],
+                     'gradientboostingclassifier__max_depth': [4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 20]}
+                  ]
+pipe = make_pipeline(RandomUnderSampler(ratio='majority', random_state=42),
+                     GradientBoostingClassifier(random_state=42))
+model = GridSearchCV(pipe, parameters_grid, cv=nested_cv_strategy, scoring='roc_auc', refit=True, return_train_score=True)
+metrics = Metrics(model, X, y, cv_strategy, n_jobs=5)
+
+# save the metrics
+print('Save metrics...', end='')
+metrics.save()
+print(' done!')

@@ -1,0 +1,38 @@
+Run model... done! (3698.00s)
+Save metrics... done!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@x23>
+Subject: Job 30535269: <RandomForest> in cluster <solar> Done
+
+Job <RandomForest> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <20*x23>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator/analysis/prediction/artefact_classification/ssh_remote_jobs/job_RandomForest> was used as the working directory.
+Started at Fri Dec  7 19:00:55 2018
+Results reported on Fri Dec  7 20:04:19 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   63233.96 sec.
+    Max Memory :                                 30 GB
+    Average Memory :                             22.24 GB
+    Total Requested Memory :                     32.00 GB
+    Delta Memory :                               2.00 GB
+    Max Swap :                                   53 GB
+    Max Processes :                              16
+    Max Threads :                                135
+    Run time :                                   3804 sec.
+    Turnaround time :                            3933 sec.
+
+The output (if any) is above this job summary.
+

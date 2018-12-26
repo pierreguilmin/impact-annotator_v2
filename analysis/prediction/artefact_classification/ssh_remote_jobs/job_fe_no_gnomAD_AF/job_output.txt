@@ -1,0 +1,38 @@
+Run model... done! (1041.89s)
+Save metrics... done!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@s21>
+Subject: Job 30736994: <fe_no_gnomAD_AF> in cluster <solar> Done
+
+Job <fe_no_gnomAD_AF> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <20*s21>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator_v2/analysis/prediction/artefact_classification/ssh_remote_jobs/job_fe_no_gnomAD_AF> was used as the working directory.
+Started at Thu Dec 13 15:17:29 2018
+Results reported on Thu Dec 13 15:35:02 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   13952.17 sec.
+    Max Memory :                                 1 GB
+    Average Memory :                             0.24 GB
+    Total Requested Memory :                     8.00 GB
+    Delta Memory :                               7.00 GB
+    Max Swap :                                   80 GB
+    Max Processes :                              56
+    Max Threads :                                866
+    Run time :                                   1055 sec.
+    Turnaround time :                            2626 sec.
+
+The output (if any) is above this job summary.
+

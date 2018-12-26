@@ -1,0 +1,38 @@
+Run model... done! (740.65s)
+Save metrics... done!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@x19>
+Subject: Job 30720590: <fe_without_gnomAD_populations> in cluster <solar> Done
+
+Job <fe_without_gnomAD_populations> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <20*x19>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator_v2/analysis/prediction/artefact_classification/ssh_remote_jobs/job_fe_without_gnomAD_populations> was used as the working directory.
+Started at Thu Dec 13 12:00:03 2018
+Results reported on Thu Dec 13 12:12:33 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   10294.06 sec.
+    Max Memory :                                 1 GB
+    Average Memory :                             0.34 GB
+    Total Requested Memory :                     8.00 GB
+    Delta Memory :                               7.00 GB
+    Max Swap :                                   82 GB
+    Max Processes :                              56
+    Max Threads :                                1074
+    Run time :                                   750 sec.
+    Turnaround time :                            751 sec.
+
+The output (if any) is above this job summary.
+
