@@ -1,0 +1,38 @@
+Run model... done! (1377.46s)
+Save metrics... done!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@u18>
+Subject: Job 30748184: <ferf_with_base_change> in cluster <solar> Done
+
+Job <ferf_with_base_change> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <20*u18>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator_v2/analysis/prediction/artefact_classification/ssh_remote_jobs/job_ferf_with_base_change> was used as the working directory.
+Started at Thu Dec 13 20:03:54 2018
+Results reported on Thu Dec 13 20:26:57 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   18572.68 sec.
+    Max Memory :                                 4 GB
+    Average Memory :                             1.95 GB
+    Total Requested Memory :                     8.00 GB
+    Delta Memory :                               4.00 GB
+    Max Swap :                                   83 GB
+    Max Processes :                              56
+    Max Threads :                                866
+    Run time :                                   1383 sec.
+    Turnaround time :                            5090 sec.
+
+The output (if any) is above this job summary.
+

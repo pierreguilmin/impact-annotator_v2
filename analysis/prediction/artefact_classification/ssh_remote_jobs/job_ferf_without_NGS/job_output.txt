@@ -1,0 +1,38 @@
+Run model... done! (1567.25s)
+Save metrics... done!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@s11>
+Subject: Job 30747947: <ferf_without_NGS> in cluster <solar> Done
+
+Job <ferf_without_NGS> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <20*s11>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator_v2/analysis/prediction/artefact_classification/ssh_remote_jobs/job_ferf_without_NGS> was used as the working directory.
+Started at Thu Dec 13 19:17:03 2018
+Results reported on Thu Dec 13 19:43:17 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   18882.87 sec.
+    Max Memory :                                 4 GB
+    Average Memory :                             2.19 GB
+    Total Requested Memory :                     8.00 GB
+    Delta Memory :                               4.00 GB
+    Max Swap :                                   83 GB
+    Max Processes :                              56
+    Max Threads :                                866
+    Run time :                                   1573 sec.
+    Turnaround time :                            3045 sec.
+
+The output (if any) is above this job summary.
+

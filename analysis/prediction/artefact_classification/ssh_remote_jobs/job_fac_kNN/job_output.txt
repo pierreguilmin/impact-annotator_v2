@@ -1,0 +1,38 @@
+Run model... done! (46896.80s)
+Save metrics... done!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@u08>
+Subject: Job 30747943: <fac_kNN> in cluster <solar> Done
+
+Job <fac_kNN> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <5*u08>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator_v2/analysis/prediction/artefact_classification/ssh_remote_jobs/job_fac_kNN> was used as the working directory.
+Started at Thu Dec 13 18:52:42 2018
+Results reported on Fri Dec 14 07:54:38 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   200075.84 sec.
+    Max Memory :                                 5 GB
+    Average Memory :                             2.34 GB
+    Total Requested Memory :                     8.00 GB
+    Delta Memory :                               3.00 GB
+    Max Swap :                                   20 GB
+    Max Processes :                              16
+    Max Threads :                                206
+    Run time :                                   46916 sec.
+    Turnaround time :                            46960 sec.
+
+The output (if any) is above this job summary.
+

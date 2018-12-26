@@ -1,0 +1,38 @@
+Run model... done! (31023.61s)
+Save metrics... done!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@u09>
+Subject: Job 30747944: <fac_SVM> in cluster <solar> Done
+
+Job <fac_SVM> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <5*u09>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator_v2/analysis/prediction/artefact_classification/ssh_remote_jobs/job_fac_SVM> was used as the working directory.
+Started at Thu Dec 13 19:09:04 2018
+Results reported on Fri Dec 14 03:46:45 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   149174.92 sec.
+    Max Memory :                                 5 GB
+    Average Memory :                             0.26 GB
+    Total Requested Memory :                     8.00 GB
+    Delta Memory :                               3.00 GB
+    Max Swap :                                   20 GB
+    Max Processes :                              16
+    Max Threads :                                206
+    Run time :                                   31061 sec.
+    Turnaround time :                            32078 sec.
+
+The output (if any) is above this job summary.
+

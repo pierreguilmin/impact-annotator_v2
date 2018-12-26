@@ -50,6 +50,7 @@
 
 ## Roadmap
 
+1. 🚜Rerun Gradient Boosting to find the best hyperparameters (optimize `n_estimators`)
 1. 📋Compare prediction results with original classification (consistent/inconsistent somatic/non-somatic annotation OR oncogenic vs likely oncogenic vs predicted oncogenic classification)
 1. 🔬Try deep learning methods.  
 2. 👀Compare both steps (artefact vs somatic and driver vs passenger) with existing methods.

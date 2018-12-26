@@ -1,0 +1,38 @@
+Run model... done! (1414.63s)
+Save metrics... done!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@x15>
+Subject: Job 30748393: <fe_rf_with_3_base_change> in cluster <solar> Done
+
+Job <fe_rf_with_3_base_change> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <20*x15>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator_v2/analysis/prediction/artefact_classification/ssh_remote_jobs/job_fe_rf_with_3_base_change> was used as the working directory.
+Started at Thu Dec 13 20:04:21 2018
+Results reported on Thu Dec 13 20:28:00 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   19914.74 sec.
+    Max Memory :                                 4 GB
+    Average Memory :                             1.70 GB
+    Total Requested Memory :                     8.00 GB
+    Delta Memory :                               4.00 GB
+    Max Swap :                                   85 GB
+    Max Processes :                              56
+    Max Threads :                                1074
+    Run time :                                   1420 sec.
+    Turnaround time :                            5079 sec.
+
+The output (if any) is above this job summary.
+
