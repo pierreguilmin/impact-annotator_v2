@@ -12,10 +12,10 @@
 
 
 ## Final clean
-- [ ] sort `temp/` folder
+- [x] sort `temp/` folder
 - [ ] comment all `prediction/` notebooks
 - [ ] finish `driver_classification/`
-- [ ] plot features importance in feature engineering related notebooks
+- [x] plot features importance in feature engineering related notebooks
 
 
 

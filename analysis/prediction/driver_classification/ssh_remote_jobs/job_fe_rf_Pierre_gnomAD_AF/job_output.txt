@@ -1,0 +1,38 @@
+Run model... done! (1473.96s)
+Save metrics... done!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@x27>
+Subject: Job 31461820: <fe_rf_Pierre_gnomAD_AF> in cluster <solar> Done
+
+Job <fe_rf_Pierre_gnomAD_AF> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <25*x27>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator_v2/analysis/prediction/driver_classification/ssh_remote_jobs/job_fe_rf_Pierre_gnomAD_AF> was used as the working directory.
+Started at Thu Dec 27 12:35:09 2018
+Results reported on Thu Dec 27 12:59:57 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   24237.57 sec.
+    Max Memory :                                 19 GB
+    Average Memory :                             6.11 GB
+    Total Requested Memory :                     32.00 GB
+    Delta Memory :                               13.00 GB
+    Max Swap :                                   100 GB
+    Max Processes :                              56
+    Max Threads :                                1074
+    Run time :                                   1488 sec.
+    Turnaround time :                            4592 sec.
+
+The output (if any) is above this job summary.
+

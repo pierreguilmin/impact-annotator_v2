@@ -1,0 +1,38 @@
+Run model... done! (1868.32s)
+Save metrics... done!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@x30>
+Subject: Job 31461831: <ferf_with_variant_caller_cv> in cluster <solar> Done
+
+Job <ferf_with_variant_caller_cv> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <25*x30>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator_v2/analysis/prediction/driver_classification/ssh_remote_jobs/job_ferf_with_variant_caller_cv> was used as the working directory.
+Started at Thu Dec 27 13:14:38 2018
+Results reported on Thu Dec 27 13:45:57 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   30087.21 sec.
+    Max Memory :                                 12 GB
+    Average Memory :                             5.40 GB
+    Total Requested Memory :                     32.00 GB
+    Delta Memory :                               20.00 GB
+    Max Swap :                                   112 GB
+    Max Processes :                              56
+    Max Threads :                                1074
+    Run time :                                   1879 sec.
+    Turnaround time :                            7057 sec.
+
+The output (if any) is above this job summary.
+

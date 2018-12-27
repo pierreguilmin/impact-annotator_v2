@@ -1,0 +1,38 @@
+Run model... done! (1646.67s)
+Save metrics... done!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@x27>
+Subject: Job 31461824: <ferf_with_population_number> in cluster <solar> Done
+
+Job <ferf_with_population_number> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <25*x27>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator_v2/analysis/prediction/driver_classification/ssh_remote_jobs/job_ferf_with_population_number> was used as the working directory.
+Started at Thu Dec 27 13:01:18 2018
+Results reported on Thu Dec 27 13:29:01 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   25568.14 sec.
+    Max Memory :                                 10 GB
+    Average Memory :                             5.34 GB
+    Total Requested Memory :                     32.00 GB
+    Delta Memory :                               22.00 GB
+    Max Swap :                                   105 GB
+    Max Processes :                              56
+    Max Threads :                                1074
+    Run time :                                   1663 sec.
+    Turnaround time :                            6110 sec.
+
+The output (if any) is above this job summary.
+

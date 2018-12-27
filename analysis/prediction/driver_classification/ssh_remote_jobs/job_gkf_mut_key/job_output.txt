@@ -1,0 +1,38 @@
+Run model... done! (521.73s)
+Save metrics... done!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@u02>
+Subject: Job 31457720: <gkf_mut_key> in cluster <solar> Done
+
+Job <gkf_mut_key> was submitted from host <selene> by user <guilminp> in cluster <solar>.
+Job was executed on host(s) <25*u02>, in queue <sol>, as user <guilminp> in cluster <solar>.
+</home/guilminp> was used as the home directory.
+</home/guilminp/impact-annotator_v2/analysis/prediction/driver_classification/ssh_remote_jobs/job_gkf_mut_key> was used as the working directory.
+Started at Thu Dec 27 10:28:14 2018
+Results reported on Thu Dec 27 10:37:09 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+ipython script.ipy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   2425.60 sec.
+    Max Memory :                                 5 GB
+    Average Memory :                             2.30 GB
+    Total Requested Memory :                     32.00 GB
+    Delta Memory :                               27.00 GB
+    Max Swap :                                   60 GB
+    Max Processes :                              56
+    Max Threads :                                866
+    Run time :                                   535 sec.
+    Turnaround time :                            1625 sec.
+
+The output (if any) is above this job summary.
+

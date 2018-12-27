@@ -8,12 +8,12 @@
 
 ## Repository structure
 
-- **`analysis/`**: folder to design and run analysis, contains several sub-folders:
+- **`analysis/`**: folder to design and run the analysis, contains several sub-folders:
     - `compute_final_dataset/`: this part is written in R and describes all the process to compute the final dataset from the raw IMPACT dataset. The final dataset will be used in the rest of the analysis.
     - `description/`: this part is written in R and contains some description/analysis of the dataset.
     - `prediction/`: this part is written in Python and explains the classifier building process.
 
-- **`data/`**: raw data and main processed data, processed data should be reprducible from raw data.   
+- **`data/`**: raw data and main processed data, processed data should be reproducible from raw data.   
   > :warning: This folder should not be versionned.
 
 - **`doc/`**: useful documentation, bibliography, slides for talks...
